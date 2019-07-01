@@ -1,14 +1,16 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
+import { Nav, NavItem } from 'reactstrap';
+
 const SignedInLinks = () => {
     return(
-        <ul className="right">
-            <li><NavLink to='/create'>Добавить фильм</NavLink></li>
-            <li><NavLink to='/create'>Профиль</NavLink></li>
-            <li><NavLink to='/'>Выйти</NavLink></li>
-        </ul>
+        <Nav className="ml-auto" navbar>
+            <NavItem><NavLink to='/create'>Добавить фильм</NavLink></NavItem>
+            <NavItem><NavLink to='/create'>Профиль</NavLink></NavItem>
+            <NavItem><NavLink to='/'>Выйти</NavLink></NavItem>
+        </Nav>
     )
-}
+};
 
 export default SignedInLinks

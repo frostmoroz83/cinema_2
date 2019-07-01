@@ -1,12 +1,14 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
+import { Nav, NavItem } from 'reactstrap';
+
 const SignedOutLinks = () => {
     return(
-        <ul className="right">
-            <li><NavLink to='/signin'>Регистрация</NavLink></li>
-            <li><NavLink to='/signup'>Войти</NavLink></li>
-        </ul>
+        <Nav className="ml-auto" navbar>
+            <NavItem><NavLink to='/signin'>Войти</NavLink></NavItem>
+            <NavItem><NavLink to='/signup'>Регистрация</NavLink></NavItem>
+        </Nav>
     )
 }
 
