@@ -1,4 +1,7 @@
 import React, {Component} from 'react'
+import Place_hall from './Place_hall'
+
+import {Container, Row, Col, Button} from 'reactstrap';
 import './Cinema_hall.css'
 
 const myFilm = {
@@ -63,234 +66,85 @@ class HallDA extends Component {
 		});
 	};
 
-	componentWillMount(){
-			}
+	componentWillMount() {
+	}
 
 	render() {
-
 		const [film] = myFilm.films;
-
 		return (
-			<div className="cinema_hall">
-				<div className="container">
-					<div className="row">
-						<div className="col s12 header_hall card-content grey-text text-darken-3">
-							<div className="section">
-								<div className="container">
-									<div className="row">
-										<div className="col s10 ">
-											<h5 className="flow-text center-align">{film.title}</h5>
-										</div>
-									</div>
-									<div className="row">
-										<div className="col s10">
-											<div className="center-align">
-												<span>{this.state.time},</span>
-												<span>{this.state.hall}</span>
-											</div>
-										</div>
-									</div>
+			<Col>
+				<div className="cinema_hall">
+					<Row className="cinema_header">
+						<Col xs="12">
+							<Row>
+								<Col xs="10">
 
-								</div>
-							</div>
-							<div className="divider"></div>
-							<div className="section">
-								<div className="container">
-									<div className="row">
-										<div className="col s10 ">
-											<div className="hall-legend">
-												<div className="hall-legend__item">
-													<span className="hall-legend__color"></span>
-													<span>{this.state.place.price}р</span>
-												</div>
-												<div className="hall-legend__item">
-                                                    <span
-																											className="hall-legend__color hall-legend__color--disabled"></span>
-													<span>Занято</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="divider"></div>
-							<div className="section">
-								<div className="container">
-									<div className="row">
-										<div className="col s12">
-											<div className="content--hall">
-												<div className="hall-schema-seats-container">
-													<div className="scalable__children-wrapper">
-														<div className="hall-schema">
-															<div className="hall-schema-row" style={{left: "-50px", top: "0"}}>1</div>
-															<div className="hall-schema-row" style={{left: "-50px", top: "50px"}}>2</div>
-															<div className="hall-schema-row" style={{left: "-50px", top: "100px"}}>3</div>
-															<div className="hall-schema-row" style={{left: "-50px", top: "150px"}}>4</div>
-															<div className="hall-schema-row" style={{left: "-50px", top: "200px"}}>5</div>
-															{/*1 ряд*/}
-															<div className="">
-																<div
-																	className="hall-schema-seat__tooltip hall-schema-seat" style={{
-																	left: "0px",
-																	top: "0px",
-																	height: "36px",
-																	width: "36px",
-																	backgroundColor: "rgb(164, 206, 54)",
-																	zIndex: "9"
-																}}>
-																	<div id="1_1" className="hall-schema-seat__place" onClick={this.onToBook}>1</div>
-																</div>
-															</div>
-															<div className="">
-																<div
-																	className="hall-schema-seat__tooltip hall-schema-seat" style={{
-																	left: "50px",
-																	top: "0px",
-																	height: "36px",
-																	width: "36px",
-																	backgroundColor: "rgb(164, 206, 54)",
-																	zIndex: "9"
-																}}>
-																	<div id="1_2" className="hall-schema-seat__place" onClick={this.onToBook}>2</div>
-																</div>
-															</div>
-															<div className="">
-																<div
-																	className="hall-schema-seat__tooltip hall-schema-seat" style={{
-																	left: "100px",
-																	top: "0px",
-																	height: "36px",
-																	width: "36px",
-																	backgroundColor: "rgb(164, 206, 54)",
-																	zIndex: "9"
-																}}>
-																	<div id="1_3" className="hall-schema-seat__place" onClick={this.onToBook}>3</div>
-																</div>
-															</div>
-															<div className="">
-																<div
-																	className="hall-schema-seat__tooltip hall-schema-seat" style={{
-																	left: "150px",
-																	top: "0px",
-																	height: "36px",
-																	width: "36px",
-																	backgroundColor: "rgb(164, 206, 54)",
-																	zIndex: "9"
-																}}>
-																	<div id="1_4" className="hall-schema-seat__place" onClick={this.onToBook}>4</div>
-																</div>
-															</div>
-															<div className="">
-																<div
-																	className="hall-schema-seat__tooltip hall-schema-seat" style={{
-																	left: "200px",
-																	top: "0px",
-																	height: "36px",
-																	width: "36px",
-																	backgroundColor: "rgb(164, 206, 54)",
-																	zIndex: "9"
-																}}>
-																	<div id="1_5" className="hall-schema-seat__place" onClick={this.onToBook}>5</div>
-																</div>
-															</div>
-															<div className="">
-																<div
-																	className="hall-schema-seat__tooltip hall-schema-seat" style={{
-																	left: "250px",
-																	top: "0px",
-																	height: "36px",
-																	width: "36px",
-																	backgroundColor: "rgb(164, 206, 54)",
-																	zIndex: "9"
-																}}>
-																	<div id="1_6" className="hall-schema-seat__place" onClick={this.onToBook}>6</div>
-																</div>
-															</div>
-															<div className="">
-																<div
-																	className="hall-schema-seat__tooltip hall-schema-seat" style={{
-																	left: "300px",
-																	top: "0px",
-																	height: "36px",
-																	width: "36px",
-																	backgroundColor: "rgb(164, 206, 54)",
-																	zIndex: "9"
-																}}>
-																	<div id="1_7" className="hall-schema-seat__place" onClick={this.onToBook}>7</div>
-																</div>
-															</div>
-															<div className="">
-																<div
-																	className="hall-schema-seat__tooltip hall-schema-seat" style={{
-																	left: "350px",
-																	top: "0px",
-																	height: "36px",
-																	width: "36px",
-																	backgroundColor: "rgb(164, 206, 54)",
-																	zIndex: "9"
-																}}>
-																	<div id="1_8" className="hall-schema-seat__place" onClick={this.onToBook}>8</div>
-																</div>
-															</div>
-															<div className="">
-																<div
-																	className="hall-schema-seat__tooltip hall-schema-seat" style={{
-																	left: "400px",
-																	top: "0px",
-																	height: "36px",
-																	width: "36px",
-																	backgroundColor: "rgb(164, 206, 54)",
-																	zIndex: "9"
-																}}>
-																	<div id="1_9" className="hall-schema-seat__place" onClick={this.onToBook}>9</div>
-																</div>
-															</div>
-															<div className="">
-																<div
-																	className="hall-schema-seat__tooltip hall-schema-seat" style={{
-																	left: "450px",
-																	top: "0px",
-																	height: "36px",
-																	width: "36px",
-																	backgroundColor: "rgb(164, 206, 54)",
-																	zIndex: "9"
-																}}>
-																	<div id="1_10" className="hall-schema-seat__place" onClick={this.onToBook}>10</div>
-																</div>
-															</div>
+									<h3 className="film_title">{film.title}</h3>
+								</Col>
+								<Col xs="2">
+									<Row className="justify-content-end">
+										<Button
+											color="primary"
+											className="align-items-center"
+										>
+											Назад
+										</Button>
+									</Row>
+								</Col>
+							</Row>
+						</Col>
+						<Col xs="12">
+							<h4>{this.state.time},&nbsp;</h4>
+							<h4>{this.state.hall}</h4>
+						</Col>
+					</Row>
+					<Row className="cinema_place">
+						<Col>
+							<div className="hall-legend">
+								<div className="hall-legend__item">
+													<span className="hall-legend__color">
 
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+													</span>
+									<span>{this.state.place.price}р</span>
+								</div>
+								<div className="hall-legend__item">
+                                                    <span className="hall-legend__color hall-legend__color--disabled">
+
+																										</span>
+									<span>Занято</span>
 								</div>
 							</div>
-							<div className="divider"></div>
-							<div className="section">
-								<div className="col s12 ">
-									<div className="footer">
-										<div className="footer-col">
-											<a className="waves-effect waves-light btn">назад</a>
-											<div className="hall-schema__sum">
-												<div className="hall-schema__sum-final">
-													<span>Итого: &nbsp;</span>
-													<span>{this.state.sum}р</span>
-												</div>
-											</div>
-											<a className="waves-effect waves-light btn">Забронировать место</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+						</Col>
+					</Row>
+					<Place_hall place={this.state.base}/>
+					<Row className="cinema_footer">
+						<Col xs="12">
+							<Row className="cinema_footer__item">
+								<Col xs={{size: 2, offset: 7}}>
+									<Row className="justify-content-end align-items-center">
+										<span><h6>Итого: &nbsp;{this.state.sum}</h6></span>
+									</Row>
+								</Col>
+								<Col xs="3">
+									<Row className="justify-content-end cinema_btn">
+										<Button
+											color="primary"
+											className="align-items-center"
+										>
+											Забронировать место
+										</Button>
+									</Row>
+								</Col>
+							</Row>
+						</Col>
+
+					</Row>
 				</div>
-			</div>
-
+			</Col>
 		)
 	}
 }
+
+
 
 export default HallDA

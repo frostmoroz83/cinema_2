@@ -1,15 +1,40 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { Nav, NavItem } from 'reactstrap';
+import { Nav, NavItem, Col, Row } from 'reactstrap';
+
 
 const SignedInLinks = () => {
     return(
+      <Row>
+        <Col>
         <Nav className="ml-auto" navbar>
-            <NavItem><NavLink to='/create'>Добавить фильм</NavLink></NavItem>
-            <NavItem><NavLink to='/create'>Профиль</NavLink></NavItem>
-            <NavItem><NavLink to='/'>Выйти</NavLink></NavItem>
+          <Row>
+            <Col xs={{size: 6, offset: 0}}>
+            <NavItem><NavLink to='/create' style={{textDecoration: 'none'}}>
+              <h5 className="mt-3">
+              Добавить&nbsp;фильм
+              </h5>
+              </NavLink></NavItem>
+            </Col>
+            <Col xs="3">
+            <NavItem><NavLink to='/create' style={{textDecoration: 'none'}}>
+              <h5 className="mt-3">
+              Профиль
+              </h5>
+              </NavLink></NavItem>
+            </Col>
+            <Col xs="3">
+            <NavItem><NavLink to='/' style={{textDecoration: 'none'}}>
+              <h5 className="mt-3">
+              Выйти
+              </h5>
+              </NavLink></NavItem>
+            </Col>
+          </Row>
         </Nav>
+        </Col>
+      </Row>
     )
 };
 

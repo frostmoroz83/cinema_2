@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
     return {
         films: state.firestore.ordered.film
     }
-}
+};
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([

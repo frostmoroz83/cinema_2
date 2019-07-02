@@ -40,6 +40,6 @@
         display: none;
     }
     .App .card-img-overlay {
-        padding-top: 0;
+        padding-top: 20px;
     }
 }

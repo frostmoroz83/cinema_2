@@ -7,63 +7,81 @@ import cinema_logo from '../../img/cinema-logo.png'
 import './NavBar.css'
 
 import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    CardImg
+	Collapse,
+	Navbar,
+	Container, Row, Col,
+	NavbarToggler,
+	NavbarBrand,
+	Nav,
+	NavItem,
+	NavLink,
+	UncontrolledDropdown,
+	DropdownToggle,
+	DropdownMenu,
+	Badge,
+	CardImg
 } from 'reactstrap';
-import {Col, Container, Row} from 'reactstrap';
+
 
 class NavBar extends Component {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.toggle = this.toggle.bind(this);
-        this.state = {
-            isOpen: false
-        };
-    }
+		this.toggle = this.toggle.bind(this);
+		this.state = {
+			isOpen: false
+		};
+	}
 
-    toggle() {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
-    }
+	toggle() {
+		this.setState({
+			isOpen: !this.state.isOpen
+		});
+	}
 
-    render() {
-        return (
-            <div>
-            <Navbar color="info" expand="md">
+	render() {
+		return (
+			<div className="nav_bar">
+				<Container>
+					<Row>
+						<Col>
+							<Row>
+								<Col xs="5">
+									<Row>
+										<Col xs="3">
+											<Link to='/'>
+												<CardImg top width="50%" src={cinema_logo} alt="Кинотеатр Cinema Place"/>
+											</Link>
+										</Col>
+										<Col xs="6">
+											<Link to="/" style={{textDecoration: 'none'}}>
+												<h3 className="mt-2">
+													Cinema Place
+												</h3>
+											</Link>
+										</Col>
+									</Row>
+								</Col>
 
-                <NavbarToggler onClick={this.toggle}/>
-                <NavbarBrand>
-                    <CardImg top width="10%" src={cinema_logo} alt="Кинотеатр Cinema Place" />
-                    <Link to='/'>Кинотеатр "Cinema Place"</Link>
-                </NavbarBrand>
-                <Collapse isOpen={this.state.isOpen} navbar>
 
-                        <SignedInLinks/>
-                        {/*<SignedOutLinks/>*/}
+								<Col xs={{size: 4, offset: 3}}>
+									{/*<SignedInLinks/>*/}
+									<SignedOutLinks/>
+								</Col>
+							</Row>
+						</Col>
+					</Row>
+				</Container>
+			</div>
 
 
-                </Collapse>
-            </Navbar>
-            </div>
+		)
+	}
+}
 
-    )
-    }
-    }
+const mapStateToProps = (state) => {
+	console.log(state);
+	return {}
+};
 
-    const mapStateToProps = (state) => {
-        console.log(state);
-        return {}
-    };
-
-    export default connect(mapStateToProps)(NavBar)
+export default connect(mapStateToProps)(NavBar)

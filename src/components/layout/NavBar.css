@@ -1,7 +1,26 @@
+.nav_bar {
+    background-color: #6c9ce2;
+    height: 50px;
+}
+.header_name {
+    margin: auto;
+}
+.row {
+    /*margin-bottom: 0;*/
+}
+
 img.card-img-top {
-    width: 10%;
+    width: 60%;
     border: 0;
 }
-a:focus {
-    text-decoration: !important;
+
+a h5,h4,h3 {
+    font-style: italic;
+}
+a h4,h3,h5 {
+    color: #ffffff;
+    text-decoration: none;
+}
+a h3:focus {
+    text-decoration: none;
 }

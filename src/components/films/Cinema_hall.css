@@ -1,17 +1,40 @@
-
+.cinema_hall {
+    margin-top: 20px;
+}
 .section {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
 }
-.section .row {
-    margin-bottom: 0;
-}
+/*.section .row {*/
+/*    margin-bottom: 0;*/
+/*}*/
 
 .cinema_hall .section {
     display: flex;
     justify-content: center;
 
 }
+
+h3.film_title {
+    color: #000000;
+    font-weight: bold;
+}
+.cinema_place  {
+    border-top: 1px solid #6C9CE2;
+    border-bottom: 1px solid #6C9CE2;
+}
+.cinema_place_item {
+    border-bottom: 1px solid #6C9CE2;
+}
+.cinema_footer {
+    /*border-top: 1px solid #6C9CE2;*/
+}
+
+
+
+
+
+/*******************************************/
 
 .place {
     width: 15px;
