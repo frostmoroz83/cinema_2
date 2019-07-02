@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom'
 
 const FilmsDetails = (props) => {
   const { film } = props;
+
   if (film) {
     return (
         <div className="container section">
@@ -50,7 +51,7 @@ const FilmsDetails = (props) => {
       </div>
     )
   }
-}
+};
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
@@ -59,7 +60,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     film: film
   }
-}
+};
 
 export default compose(
   connect(mapStateToProps),

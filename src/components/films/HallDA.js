@@ -1,8 +1,12 @@
 import React, {Component} from 'react'
 import Place_hall from './Place_hall'
-
+import { browserHistory } from 'react-router'
 import {Container, Row, Col, Button} from 'reactstrap';
 import './Cinema_hall.css'
+import {compose} from "redux";
+import {connect} from "react-redux";
+import {firestoreConnect} from "react-redux-firebase";
+import {Link} from "react-router-dom";
 
 const myFilm = {
 	films: [
@@ -66,12 +70,12 @@ class HallDA extends Component {
 		});
 	};
 
-	componentWillMount() {
-	}
 
 	render() {
 		const [film] = myFilm.films;
 		const {base} = this.state;
+
+		console.log(film);
 		return (
 			<Col>
 				<div className="cinema_hall">
@@ -88,7 +92,12 @@ class HallDA extends Component {
 											color="primary"
 											className="align-items-center"
 										>
-											Назад
+                                            <Link to="/" style={{textDecoration: 'none'}}>
+                                                <h6 className="mb-3">
+                                                    Закрыть
+                                                </h6>
+                                            </Link>
+
 										</Button>
 									</Row>
 								</Col>
@@ -147,6 +156,13 @@ class HallDA extends Component {
 		)
 	}
 }
+const mapStateToProps = (state) => {
+    //console.log(state);
+    return {
+        film: state.tickets.films
+    }
+};
+export default
+    connect(mapStateToProps)(HallDA)
 
 
-export default HallDA
