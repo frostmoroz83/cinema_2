@@ -28,7 +28,7 @@ class HallDA extends Component {
 			number_place: '',
 		},
 		sum: 0,
-		base: ['1_1', '1_2', '1_3', '1_4', '1_5', '1_6', '1_7', '1_8', '1_9', '1_10'],
+		base: [[0, 1, 2, 3],[0, 1, 2],[0, 1, 2]],
 		color_open: 'rgb(164, 206, 54)',
 		color_close: 'rgb(120, 102, 54)',
 	};
@@ -71,6 +71,7 @@ class HallDA extends Component {
 
 	render() {
 		const [film] = myFilm.films;
+		const {base} = this.state;
 		return (
 			<Col>
 				<div className="cinema_hall">
@@ -116,7 +117,9 @@ class HallDA extends Component {
 							</div>
 						</Col>
 					</Row>
-					<Place_hall place={this.state.base}/>
+
+						<Place_hall place={base}/>
+
 					<Row className="cinema_footer">
 						<Col xs="12">
 							<Row className="cinema_footer__item">
@@ -144,7 +147,6 @@ class HallDA extends Component {
 		)
 	}
 }
-
 
 
 export default HallDA

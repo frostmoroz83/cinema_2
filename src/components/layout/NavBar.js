@@ -6,21 +6,7 @@ import {connect} from 'react-redux'
 import cinema_logo from '../../img/cinema-logo.png'
 import './NavBar.css'
 
-import {
-	Collapse,
-	Navbar,
-	Container, Row, Col,
-	NavbarToggler,
-	NavbarBrand,
-	Nav,
-	NavItem,
-	NavLink,
-	UncontrolledDropdown,
-	DropdownToggle,
-	DropdownMenu,
-	Badge,
-	CardImg
-} from 'reactstrap';
+import { Container, Row, Col, CardImg } from 'reactstrap';
 
 
 class NavBar extends Component {
@@ -50,13 +36,13 @@ class NavBar extends Component {
 									<Row>
 										<Col xs="3">
 											<Link to='/'>
-												<CardImg top width="50%" src={cinema_logo} alt="Кинотеатр Cinema Place"/>
+												<CardImg top width="50%" src={cinema_logo} alt="RelaxCinema"/>
 											</Link>
 										</Col>
 										<Col xs="6">
 											<Link to="/" style={{textDecoration: 'none'}}>
 												<h3 className="mt-2">
-													Cinema Place
+													RelaxCinema
 												</h3>
 											</Link>
 										</Col>
@@ -80,7 +66,7 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-	console.log(state);
+	// console.log(state);
 	return {}
 };
 

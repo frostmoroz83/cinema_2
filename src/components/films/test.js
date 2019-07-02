@@ -26,3 +26,7 @@ import React from "react";
 	</Col>
 
 </Row>
+
+{/*<Col id={place_id} className="place_item">*/}
+{/*	Ряд:{place_row} - Место:{place_num}*/}
+{/*</Col>*/}
