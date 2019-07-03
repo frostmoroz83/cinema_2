@@ -23,84 +23,57 @@ const myFilm = {
 	]
 };
 
+
+const state = {
+    time: '1 июля в 16:00',
+    hall: 'Зал DOLBY ATMOS',
+    place: {
+        price: 250,
+        number_place: '',
+    },
+    sum: 0,
+    base: {
+        0: {
+            0: {'place': 'Место 1'},
+            1: {'place': 'Место 2'},
+            // 2:{'place': 'Место 3'},
+        },
+        1: {
+            0: {'place': 'Место 1'},
+            1: {'place': 'Место 2'},
+            2: {'place': 'Место 3'},
+        }
+    },
+    color_open: 'rgb(164, 206, 54)',
+    color_close: 'rgb(120, 102, 54)',
+};
+
 class HallDA extends Component {
-	state = {
-		time: '1 июля в 16:00',
-		hall: 'Зал DOLBY ATMOS',
-		place: {
-			price: 250,
-			number_place: '',
-		},
-		sum: 0,
-		base: {
-			0: {
-				0: {'place': 'Место 1'},
-				1: {'place': 'Место 2'},
-				// 2:{'place': 'Место 3'},
-			},
-			1: {
-				0: {'place': 'Место 1'},
-				1: {'place': 'Место 2'},
-				2: {'place': 'Место 3'},
-			}
-		},
-		color_open: 'rgb(164, 206, 54)',
-		color_close: 'rgb(120, 102, 54)',
-	};
 
-	onToBook = (e) => {
-		const elem = e.currentTarget.id;
-		this.setState({
-			place: {
-				number_place: elem
-			},
-		});
-		this.removePlace(elem);
-		console.log(this.state);
-	};
 
-	addPlace = (elem) => {
-		const arr = this.state.base;
-		arr.push(elem);
-		this.setState({
-			...this.state,
-			base: arr,
-		});
-	};
+
+
 
 	placeTest = (id_row, id_place) => {
 		console.log(id_row);
 		console.log(id_place);
-		const arr = this.state.base;
-		const del = deleteID arr();
-		const place = {id_row:{
-				id_place
-			}}
-		console.log(place);
+		const i = id_row;
+		const j = id_place;
+		const arr = state.base;
+		 delete arr[i][j];
+
 		this.setState({
-			...this.state,
-			base: del,
+			...state,
+			base: arr,
 		});
 		// this.removePlace(place)
-	}
-
-	removePlace = (place) => {
-
-		const arr = this.state.base;
-		const place_del = place;
-		const del = delete arr[place_del];
-
-		this.setState({
-				...this.state,
-				base: del,
-			});
-
 	};
+
 
 
 	render() {
 		const [film] = myFilm.films;
-		const {base} = this.state;
+		const {base} = state;
 
 		console.log(film);
 		return (
@@ -131,8 +104,8 @@ class HallDA extends Component {
 							</Row>
 						</Col>
 						<Col xs="12">
-							<h4>{this.state.time},&nbsp;</h4>
-							<h4>{this.state.hall}</h4>
+							<h4>{state.time},&nbsp;</h4>
+							<h4>{state.hall}</h4>
 						</Col>
 					</Row>
 					<Row className="cinema_place">
@@ -142,7 +115,7 @@ class HallDA extends Component {
 													<span className="hall-legend__color">
 
 													</span>
-									<span>{this.state.place.price}р</span>
+									<span>{state.place.price}р</span>
 								</div>
 								<div className="hall-legend__item">
                                                     <span className="hall-legend__color hall-legend__color--disabled">
@@ -161,7 +134,7 @@ class HallDA extends Component {
 							<Row className="cinema_footer__item">
 								<Col xs={{size: 2, offset: 7}}>
 									<Row className="justify-content-end align-items-center">
-										<span><h6>Итого: &nbsp;{this.state.sum}</h6></span>
+										<span><h6>Итого: &nbsp;{state.sum}</h6></span>
 									</Row>
 								</Col>
 								<Col xs="3">

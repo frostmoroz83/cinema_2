@@ -9,7 +9,8 @@ class CreateFilms extends Component {
         title: '',
         content: '',
         price: '',
-        img: ''
+        img: '',
+        video: ''
     }
     handleChange = (e) => {
         this.setState({
@@ -27,7 +28,7 @@ class CreateFilms extends Component {
                 <form onSubmit={this.handleSubmit} className="white">
                     <h5 className="grey-text text-darken-3">Добавить фильм</h5>
                     <div className="input-field">
-                        <label htmlFor="title">Title</label>
+                        <label htmlFor="title">Название фильма</label>
                         <input type="text" id="title" onChange={this.handleChange}/>
                     </div>
                     <div className="input-field">
@@ -35,15 +36,16 @@ class CreateFilms extends Component {
                         <label htmlFor="content">Содержание фильма</label>
                     </div>
                     <div className="input-field">
-                        <label htmlFor="price">Price</label>
+                        <label htmlFor="price">Цена</label>
                         <input type="text" id="price" onChange={this.handleChange}/>
                     </div>
                     <div className="input-field">
-                        <label htmlFor="image">image</label>
-                        <input type="text" id="image" onChange={this.handleChange}/>
+                        <label htmlFor="img">Постер фильма</label>
+                        <input type="text" id="img" onChange={this.handleChange}/>
                     </div>
                     <div className="input-field">
-                        <input type="file" id="img" onChange={this.handleChange}/>
+                        <label htmlFor="video">Трейлер фильма</label>
+                        <input type="text" id="video" onChange={this.handleChange}/>
                     </div>
                     <div className="input-field">
                         <button className="btn pink">Добавить</button>

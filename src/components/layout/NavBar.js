@@ -51,7 +51,7 @@ class NavBar extends Component {
 
 
 								<Col xs={{size: 4, offset: 3}}>
-									{/*<SignedInLinks/>*/}
+									<SignedInLinks/>
 									<SignedOutLinks/>
 								</Col>
 							</Row>
