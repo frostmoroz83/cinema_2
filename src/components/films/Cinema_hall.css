@@ -41,6 +41,13 @@ h3.film_title {
     margin: 10px;
     cursor: pointer;
 }
+.place_item.close_place {
+    width: 50px;
+    height: 50px;
+    background-color: #e23824;
+    margin: 10px;
+    cursor: none;
+}
 .place_item:hover {
     background-color: #09203F;
 }

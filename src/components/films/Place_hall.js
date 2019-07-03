@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {CardImg, Col, Row,} from "reactstrap";
 import screen from '../../img/hall-screen.svg'
 import cinema_logo from "../../img/cinema-logo.png";
-import * as PropTypes from "prop-types";
+import classnames from 'classnames';
 
 class PlaceHall extends Component {
     lol = (e) => {
@@ -25,7 +25,7 @@ class PlaceHall extends Component {
 
                                 <Col xs="1"
                                      data-row={row}
-                                     className="place_item"
+                                     className={classnames('place_item', {'close_place': place[row][place_id]['status'] == 'close_place'})}
                                      data-place={place_id}
                                      onClick={this.lol}>
                                     {place[row][place_id].place}

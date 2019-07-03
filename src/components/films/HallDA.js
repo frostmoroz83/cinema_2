@@ -27,40 +27,53 @@ const state = {
         price: 250,
         number_place: '',
     },
-    sum: 0,
+    sum: 250,
     base: {
         0: {
-            0: {'place': 'Место 1'},
-            1: {'place': 'Место 2'},
+            0: {'place': 'Место 1', 'status': 'open'},
+            1: {'place': 'Место 2', 'status': 'open'},
             // 2:{'place': 'Место 3'},
         },
         1: {
-            0: {'place': 'Место 1'},
-            1: {'place': 'Место 2'},
-            2: {'place': 'Место 3'},
+            0: {'place': 'Место 1', 'status': 'open'},
+            1: {'place': 'Место 2', 'status': 'open'},
+            2: {'place': 'Место 3', 'status': 'open'},
         }
     },
-    color_open: 'rgb(164, 206, 54)',
-    color_close: 'rgb(120, 102, 54)',
 };
 
+
+
 class HallDA extends Component {
-    placeTest = (id_row, id_place) => {
+     placeTest = async (id_row, id_place) => {
         console.log(id_row);
         console.log(id_place);
         const i = id_row;
         const j = id_place;
         const arr = state.base;
-        delete arr[i][j];
-        this.setState({
+        console.log(arr);
+        console.log(arr[i][j]);
+        // arr[i][j];
+        arr[i][j]['status'] = 'close_place';
+        console.log(state.place.price);
+        const summ = state.sum;
+        const place_price = state.place.price;
+        const count = +summ + +place_price;
+        alert(count);
+         await this.setState({
             ...state,
-            base: arr,
+            sum: 10000,
+
+            // base: arr,
         });
+
+        console.log(state);
     };
 
     render() {
         const [film] = myFilm.films;
-        const {base} = state;
+        const {base , sum} = state;
+
         console.log(film);
         return (
             <Col>
@@ -110,18 +123,12 @@ class HallDA extends Component {
                             </div>
                         </Col>
                     </Row>
-
                     <Place_hall place={base} rodi={this.placeTest}/>
-
                     <Row className="cinema_footer">
                         <Col xs="12">
                             <Row className="cinema_footer__item">
                                 <Col xs={{size: 2, offset: 7}}>
-                                    <Row className="justify-content-end align-items-center">
-                                        <span>
-                                                Итого: &nbsp;{state.sum}
-                                        </span>
-                                    </Row>
+                                    <SUM sum={sum}/>
                                 </Col>
                                 <Col xs="3">
                                     <Row className="justify-content-end cinema_btn">
@@ -141,6 +148,19 @@ class HallDA extends Component {
         )
     }
 }
+
+export const SUM = ({sum}) => {
+
+    console.log(sum);
+    return (
+        <Row className="justify-content-end align-items-center">
+            <span>
+                Итого: &nbsp;{sum}
+            </span>
+        </Row>
+    )
+};
+
 export default HallDA
 
 
