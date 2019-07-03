@@ -37,7 +37,9 @@ class PlaceHall extends Component {
 
 	lol = (e) => {
 		// console.log(e.currentTarget.dataset.row+"-"+e.currentTarget.dataset.place);
-		this.props.rodi(e.currentTarget.dataset.row);
+		const id_row = e.currentTarget.dataset.row;
+		const id_place = e.currentTarget.dataset.place;
+		this.props.rodi(id_row,id_place);
 	};
 
 	render() {
@@ -57,12 +59,12 @@ class PlaceHall extends Component {
 							// const row_id = row;
 							// const row_num = index;
 
-							<Row>
+							<Row className="justify-content-center">
 						{ Object.keys(place[row]).map((place_id)=>
 								// { alert(JSON.stringify(place[row][place_id].place)) }
 								// const place_id = `${row_id}_${index}`;
 
-								<Col data-row={row} data-place={place_id} onClick={this.lol}>{place[row][place_id].place}</Col>
+								<Col xs="1" data-row={row} className="place_item" data-place={place_id} onClick={this.lol}>{place[row][place_id].place}</Col>
 						)}</Row>
 							)}
 

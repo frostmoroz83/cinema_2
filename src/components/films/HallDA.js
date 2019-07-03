@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Place_hall from './Place_hall'
-import { browserHistory } from 'react-router'
+import {browserHistory} from 'react-router'
 import {Container, Row, Col, Button} from 'reactstrap';
 import './Cinema_hall.css'
 import {compose} from "redux";
@@ -32,15 +32,18 @@ class HallDA extends Component {
 			number_place: '',
 		},
 		sum: 0,
-		base: {0:{
-						0:{'place': 'Место 1'},
-						1:{'place': 'Место 2'},
-						// 2:{'place': 'Место 3'},
-						},1:{
-				0:{'place': 'Место 1'},
-				1:{'place': 'Место 2'},
-				2:{'place': 'Место 3'},
-			}},
+		base: {
+			0: {
+				0: {'place': 'Место 1'},
+				1: {'place': 'Место 2'},
+				// 2:{'place': 'Место 3'},
+			},
+			1: {
+				0: {'place': 'Место 1'},
+				1: {'place': 'Место 2'},
+				2: {'place': 'Место 3'},
+			}
+		},
 		color_open: 'rgb(164, 206, 54)',
 		color_close: 'rgb(120, 102, 54)',
 	};
@@ -65,21 +68,33 @@ class HallDA extends Component {
 		});
 	};
 
-	placeTest = (element) => {
-			console.log("Hello");
-	}
-
-	removePlace = (elem) => {
+	placeTest = (id_row, id_place) => {
+		console.log(id_row);
+		console.log(id_place);
 		const arr = this.state.base;
-		const index = arr.indexOf(elem);
-		if (index > -1) {
-			arr.splice(index, 1);
-
-		}
+		const del = deleteID arr();
+		const place = {id_row:{
+				id_place
+			}}
+		console.log(place);
 		this.setState({
 			...this.state,
-			base: arr,
+			base: del,
 		});
+		// this.removePlace(place)
+	}
+
+	removePlace = (place) => {
+
+		const arr = this.state.base;
+		const place_del = place;
+		const del = delete arr[place_del];
+
+		this.setState({
+				...this.state,
+				base: del,
+			});
+
 	};
 
 
@@ -104,11 +119,11 @@ class HallDA extends Component {
 											color="primary"
 											className="align-items-center"
 										>
-                                            <Link to="/" style={{textDecoration: 'none'}}>
-                                                <h6 className="mb-3">
-                                                    Закрыть
-                                                </h6>
-                                            </Link>
+											<Link to="/" style={{textDecoration: 'none'}}>
+												<h6 className="mb-3">
+													Закрыть
+												</h6>
+											</Link>
 
 										</Button>
 									</Row>
@@ -139,7 +154,7 @@ class HallDA extends Component {
 						</Col>
 					</Row>
 
-						<Place_hall place={base} rodi={this.placeTest}/>
+					<Place_hall place={base} rodi={this.placeTest}/>
 
 					<Row className="cinema_footer">
 						<Col xs="12">
@@ -168,13 +183,13 @@ class HallDA extends Component {
 		)
 	}
 }
+
 const mapStateToProps = (state) => {
-    //console.log(state);
-    return {
-        film: state.tickets.films
-    }
+	//console.log(state);
+	return {
+		film: state.tickets.films
+	}
 };
-export default
-    connect(mapStateToProps)(HallDA)
+export default connect(mapStateToProps)(HallDA)
 
 
