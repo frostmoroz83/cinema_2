@@ -32,7 +32,15 @@ class HallDA extends Component {
 			number_place: '',
 		},
 		sum: 0,
-		base: [[0, 1, 2, 3],[0, 1, 2],[0, 1, 2]],
+		base: {0:{
+						0:{'place': 'Место 1'},
+						1:{'place': 'Место 2'},
+						// 2:{'place': 'Место 3'},
+						},1:{
+				0:{'place': 'Место 1'},
+				1:{'place': 'Место 2'},
+				2:{'place': 'Место 3'},
+			}},
 		color_open: 'rgb(164, 206, 54)',
 		color_close: 'rgb(120, 102, 54)',
 	};
@@ -56,6 +64,10 @@ class HallDA extends Component {
 			base: arr,
 		});
 	};
+
+	placeTest = (element) => {
+			console.log("Hello");
+	}
 
 	removePlace = (elem) => {
 		const arr = this.state.base;
@@ -127,7 +139,7 @@ class HallDA extends Component {
 						</Col>
 					</Row>
 
-						<Place_hall place={base}/>
+						<Place_hall place={base} rodi={this.placeTest}/>
 
 					<Row className="cinema_footer">
 						<Col xs="12">

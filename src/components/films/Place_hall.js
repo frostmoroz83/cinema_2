@@ -6,72 +6,75 @@ import cinema_logo from "../../img/cinema-logo.png";
 import * as PropTypes from "prop-types";
 
 class PlaceHall extends Component {
-    // createPlace = (place) => {
-    //     console.log(place);
-    // 	{place && place.map(function (row, index, place) {
-    // 		let row_id = row;
-    //         console.log(row_id);
-    // 		let row_num = index + 1;
-    // 		return place[index].map(function (row, index, place) {
-    // 		    let num_id = row;
-    //             console.log(num_id);
-    //             return num_id;
-    // 			}
-    // 		)
-    // 	})}
-    // };
-    // createTable = (place, place_num) => {
-    // 	let table = [];
-    // 	// let place_row = place;
-    // 	// let place_num = place_num;
-    // 	for (let i = 0; i >= place; i++) {
-    // 		let children = [];
-    // 		for (let j = 0; j <= place_num; j++) {
-    // 			children.push(<Col>{`Column ${j + 1}`}</Col>)
-    // 		}
-    // 		//Create the parent and add the children
-    // 		table.push(<Row>{children}</Row>)
-    // 	}
-    // 	return table
-    // };
+	// createPlace = (place) => {
+	//     console.log(place);
+	// 	{place && place.map(function (row, index, place) {
+	// 		let row_id = row;
+	//         console.log(row_id);
+	// 		let row_num = index + 1;
+	// 		return place[index].map(function (row, index, place) {
+	// 		    let num_id = row;
+	//             console.log(num_id);
+	//             return num_id;
+	// 			}
+	// 		)
+	// 	})}
+	// };
+	// createTable = (place, place_num) => {
+	// 	let table = [];
+	// 	// let place_row = place;
+	// 	// let place_num = place_num;
+	// 	for (let i = 0; i >= place; i++) {
+	// 		let children = [];
+	// 		for (let j = 0; j <= place_num; j++) {
+	// 			children.push(<Col>{`Column ${j + 1}`}</Col>)
+	// 		}
+	// 		//Create the parent and add the children
+	// 		table.push(<Row>{children}</Row>)
+	// 	}
+	// 	return table
+	// };
 
-    render() {
-        let {place} = this.props;
-        // let createPlace = this.createPlace(place);
+	lol = (e) => {
+		// console.log(e.currentTarget.dataset.row+"-"+e.currentTarget.dataset.place);
+		this.props.rodi(e.currentTarget.dataset.row);
+	};
 
-
-        return (
-
-            <Row className="cinema_place_item">
-                <Col xs="12">
-                    <CardImg central width="100%" src={screen} alt="Кинотеатр Cinema Place"/>
-                </Col>
-                <Col>
-                    <Row>
-                        {place && place.map(function (row, index, place) {
-                            const row_id = row;
-                            const row_num = index;
-                            return place[index].map(function (row, index, place) {
-                                    const place_id = `${row_id}_${index}`;
-
-                                    return (
-                                        <PlaceWrapper row_id={row_id} place_row={row_num} place_num={row}
-                                                      place_id={place_id}/>
-                                    )
-
-                                }
-                            )
-                        })}
-                    </Row>
-                </Col>
-
-            </Row>
+	render() {
+		let {place} = this.props;
+		// let createPlace = this.createPlace(place);
 
 
-        );
-    }
+		return (
+
+			<Row className="cinema_place_item">
+				<Col xs="12">
+					<CardImg central width="100%" src={screen} alt="Кинотеатр Cinema Place"/>
+				</Col>
+				<Col>
+						{place && Object.keys(place).map((row)=>
+							// { alert(JSON.stringify(row)) }
+							// const row_id = row;
+							// const row_num = index;
+
+							<Row>
+						{ Object.keys(place[row]).map((place_id)=>
+								// { alert(JSON.stringify(place[row][place_id].place)) }
+								// const place_id = `${row_id}_${index}`;
+
+								<Col data-row={row} data-place={place_id} onClick={this.lol}>{place[row][place_id].place}</Col>
+						)}</Row>
+							)}
+
+				</Col>
+
+			</Row>
+
+
+		);
+	}
 }
 
-PlaceHall.propTypes = {place: PropTypes.any}
+// PlaceHall.propTypes = {place: PropTypes.any}
 
 export default PlaceHall;
