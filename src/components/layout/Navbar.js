@@ -29,25 +29,25 @@ class Navbar extends Component {
         return (
             <div className="nav_bar">
                 <Container>
-                    <Row className="justify-content-around align-items-baseline">
-                        <Col>
-                            <Row className="justify-content-start">
-                                <Col>
-                                    <Link to='/'>
-                                        {/*<CardImg top width="50%" src={cinema_logo} alt="RelaxCinema"/>*/}
+                    <Row className="justify-content-between flex-nowrap align-items-center pt-2 pb-2">
+                        <Col  xs="5" className="footer_img">
+                            <Row className="justify-content-start flex-nowrap align-items-center">
+                                <Col xs="3">
+                                    <Link to='/' style={{textDecoration: 'none'}}>
+                                        <img src={cinema_logo} alt="RelaxCinema"/>
                                     </Link>
                                 </Col>
                                 <Col>
                                     <Link to="/" style={{textDecoration: 'none'}}>
-                                        <h3>
+                                        <div className="heder_title">
                                             RelaxCinema
-                                        </h3>
+                                        </div>
                                     </Link>
                                 </Col>
                             </Row>
                         </Col>
-                        <Col>
-                            <Row className="justify-content-end">
+                        <Col xs="7">
+                            <Row className="justify-content-end flex-nowrap align-items-center">
                                 {/*<SignedInLinks/>*/}
                                 <SignedOutLinks/>
                             </Row>

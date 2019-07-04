@@ -6,21 +6,21 @@ import {Col, Nav, NavItem, Row} from 'reactstrap';
 const SignedOutLinks = () => {
 	return (
 
-			<Col>
-				<Nav className="ml-auto" navbar>
-					<Row>
-						<Col xs={{size: 4, offset: 4}}>
+			<Col xs="8 offset-4" >
+				<Nav navbar>
+					<Row className="justify-content-end flex-nowrap align-items-center">
+						<Col >
 							<NavItem><NavLink to='/signin' style={{textDecoration: 'none'}}>
-								<h5>
+								<div className="header_title">
 								Войти
-								</h5>
+								</div>
 							</NavLink></NavItem>
 						</Col>
-						<Col xs="4">
+						<Col>
 							<NavItem><NavLink to='/signup' style={{textDecoration: 'none'}}>
-								<h5>
+								<div className="header_title">
 								Регистрация
-								</h5>
+								</div>
 							</NavLink></NavItem>
 						</Col>
 					</Row>

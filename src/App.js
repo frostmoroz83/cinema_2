@@ -11,8 +11,9 @@ import HalloDA from './components/films/HallDA'
 import FAQ from './components/films/FAQ'
 import Ticket from './components/films/Ticket'
 
-import {Container, CardImgOverlay, CardImg, Row} from 'reactstrap';
+import {Container, CardImgOverlay, CardImg} from 'reactstrap';
 import './App.css'
+import Footer from "./components/layout/Footer";
 
 class App extends React.Component {
     render() {
@@ -25,10 +26,10 @@ class App extends React.Component {
                              alt="Card image cap"/>
 
                     <CardImgOverlay>
-                        <div className="wrapper">
+                        <div className="wrapper d-flex flex-column justify-content-between">
                                 <NavBar/>
-                            <Container>
-                                <Row>
+                            <div className="content">
+                                <Container>
                                 <Switch>
                                     <Route exact path='/' component={Content}/>
                                     <Route path='/films/:id' component={FilmsDetails}/>
@@ -39,8 +40,9 @@ class App extends React.Component {
                                     <Route path='/faq' component={FAQ}/>
                                     <Route path='/ticket' component={Ticket}/>
                                 </Switch>
-                                </Row>
-                            </Container>
+                                </Container>
+                            </div>
+                            <Footer/>
                         </div>
                     </CardImgOverlay>
                 </div>

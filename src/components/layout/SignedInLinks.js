@@ -6,28 +6,28 @@ import {Nav, NavItem, Col, Row} from 'reactstrap';
 
 const SignedInLinks = () => {
     return (
-        <Col>
-            <Nav className="ml-auto" navbar>
-                <Row>
-                    <Col xs={{size: 6, offset: 0}}>
+        <Col xs="9 offset-3">
+            <Nav navbar>
+                <Row className="justify-content-end flex-nowrap align-items-center">
+                    <Col >
                         <NavItem><NavLink to='/create' style={{textDecoration: 'none'}}>
-                            <h5 className="mt-3">
+                            <div className="header_title">
                                 Добавить&nbsp;фильм
-                            </h5>
+                            </div>
                         </NavLink></NavItem>
                     </Col>
-                    <Col xs="3">
+                    <Col>
                         <NavItem><NavLink to='/create' style={{textDecoration: 'none'}}>
-                            <h5>
+                            <div className="header_title">
                                 Профиль
-                            </h5>
+                            </div>
                         </NavLink></NavItem>
                     </Col>
-                    <Col xs="3">
+                    <Col>
                         <NavItem><NavLink to='/' style={{textDecoration: 'none'}}>
-                            <h5>
+                            <div className="header_title">
                                 Выйти
-                            </h5>
+                            </div>
                         </NavLink></NavItem>
                     </Col>
                 </Row>

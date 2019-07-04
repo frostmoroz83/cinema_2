@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {Col, Row} from "reactstrap";
-import * as PropTypes from "prop-types";
-
 
 class PlaceWrapper extends Component {
 
@@ -21,7 +19,7 @@ class PlaceWrapper extends Component {
 
 
 	render() {
-		let {place_row, place_num, place_id, row_id} = this.props;
+		let {place_row, place_num} = this.props;
 		console.log(`Ряд: ${place_row}`);
 		console.log(`Место: ${place_num}`);
 		const place_index = `${place_row}_${place_num}`;
@@ -36,11 +34,6 @@ class PlaceWrapper extends Component {
 		);
 
 	}
-}
-
-PlaceWrapper.propTypes = {
-	place_row: PropTypes.any,
-	place_num: PropTypes.any
 }
 
 export default PlaceWrapper;
