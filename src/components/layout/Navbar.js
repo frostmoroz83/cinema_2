@@ -9,7 +9,7 @@ import './NavBar.css'
 import {Container, Row, Col, CardImg} from 'reactstrap';
 
 
-class NavBar extends Component {
+class Navbar extends Component {
     constructor(props) {
         super(props);
 
@@ -66,4 +66,4 @@ const mapStateToProps = (state) => {
     return {}
 };
 
-export default connect(mapStateToProps)(NavBar)
+export default connect(mapStateToProps)(Navbar)
