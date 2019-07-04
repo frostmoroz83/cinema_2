@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import Place_hall from './Place_hall'
-import { Row, Col, Button} from 'reactstrap';
+import {Row, Col, Button} from 'reactstrap';
 import './Cinema_hall.css'
 import {Link} from "react-router-dom";
+import classnames from "classnames";
 
 const myFilm = {
     films: [
@@ -58,6 +59,7 @@ class HallDA extends Component {
             sum.sum -= state.place.price;
             delete message.number_place[id];
         }
+
         this.setState({
             ...state,
             place: {
@@ -69,6 +71,20 @@ class HallDA extends Component {
         });
         console.log(state);
     };
+    booked = () => {
+        const ticketss = state.place.number_place;
+        console.log(ticketss);
+        return (
+            <div>
+                {ticketss && Object.keys(ticketss).map((id) =>
+                    <Col xs="1">
+                        {ticketss[id].row}
+                        {ticketss[id].place}
+                    </Col>
+                )}
+            </div>
+        )
+    }
 
     render() {
         const [film] = myFilm.films;
@@ -129,6 +145,7 @@ class HallDA extends Component {
                             <Row className="cinema_footer__item">
                                 <Col xs={{size: 2, offset: 7}}>
                                     <SUM sum={sum}/>
+                                    {this.booked()}
                                 </Col>
                                 <Col xs="3">
                                     <Row className="justify-content-end cinema_btn">
@@ -150,8 +167,6 @@ class HallDA extends Component {
 }
 
 export const SUM = ({sum}) => {
-
-    console.log(sum);
     return (
         <Row className="justify-content-end align-items-center">
             <span>
