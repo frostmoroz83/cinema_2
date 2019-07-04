@@ -5,10 +5,10 @@ import cinema_logo from "../../img/cinema-logo.png";
 import classnames from 'classnames';
 
 class PlaceHall extends Component {
-    lol = (e) => {
+    placeID = (e) => {
         const id_row = e.currentTarget.dataset.row;
         const id_place = e.currentTarget.dataset.place;
-        this.props.rodi(id_row, id_place);
+        this.props.choiceOfPlaces(id_row, id_place);
     };
     render() {
         let {place} = this.props;
@@ -19,15 +19,13 @@ class PlaceHall extends Component {
                 </Col>
                 <Col>
                     {place && Object.keys(place).map((row) =>
-
                         <Row className="justify-content-center">
                             {Object.keys(place[row]).map((place_id) =>
-
                                 <Col xs="1"
                                      data-row={row}
                                      className={classnames('place_item', {'close_place': place[row][place_id]['status'] == 'close_place'})}
                                      data-place={place_id}
-                                     onClick={this.lol}>
+                                     onClick={this.placeID}>
                                     {place[row][place_id].place}
                                 </Col>
                             )}

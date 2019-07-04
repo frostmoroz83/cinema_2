@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import Place_hall from './Place_hall'
-import {Container, Row, Col, Button} from 'reactstrap';
+import { Row, Col, Button} from 'reactstrap';
 import './Cinema_hall.css'
-import {connect} from "react-redux";
 import {Link} from "react-router-dom";
 
 const myFilm = {
@@ -25,54 +24,55 @@ const state = {
     hall: 'Зал DOLBY ATMOS',
     place: {
         price: 250,
-        number_place: '',
+        number_place: {},
+        sum_tickets: '',
     },
-    sum: 250,
+    sum: 0,
     base: {
         0: {
-            0: {'place': 'Место 1', 'status': 'open'},
-            1: {'place': 'Место 2', 'status': 'open'},
+            0: {'row': 'Ряд 1', 'place': 'Место 1', 'status': 'open'},
+            1: {'row': 'Ряд 1', 'place': 'Место 2', 'status': 'open'},
             // 2:{'place': 'Место 3'},
         },
         1: {
-            0: {'place': 'Место 1', 'status': 'open'},
-            1: {'place': 'Место 2', 'status': 'open'},
-            2: {'place': 'Место 3', 'status': 'open'},
+            0: {'row': 'Ряд 2', 'place': 'Место 1', 'status': 'open'},
+            1: {'row': 'Ряд 2', 'place': 'Место 2', 'status': 'open'},
+            2: {'row': 'Ряд 2', 'place': 'Место 3', 'status': 'open'},
         }
     },
 };
 
 
-
 class HallDA extends Component {
-     placeTest = async (id_row, id_place) => {
-        console.log(id_row);
-        console.log(id_place);
-        const i = id_row;
-        const j = id_place;
+    choiceOfPlaces = (id_row, id_place) => {
         const arr = state.base;
-        console.log(arr);
-        console.log(arr[i][j]);
-        // arr[i][j];
-        arr[i][j]['status'] = 'close_place';
-        console.log(state.place.price);
-        const summ = state.sum;
-        const place_price = state.place.price;
-        const count = +summ + +place_price;
-        alert(count);
-         await this.setState({
+        const sum = state;
+        const message = state.place;
+        const id = `${id_row}_${id_place}`;
+        if (arr[id_row][id_place]['status'] !== 'close_place') {
+            arr[id_row][id_place]['status'] = 'close_place';
+            sum.sum += state.place.price;
+            message.number_place[id] = arr[id_row][id_place];
+        } else {
+            arr[id_row][id_place]['status'] = 'open';
+            sum.sum -= state.place.price;
+            delete message.number_place[id];
+        }
+        this.setState({
             ...state,
-            sum: 10000,
-
-            // base: arr,
+            place: {
+                ...state,
+                number_place: message,
+            },
+            sum: sum,
+            base: arr,
         });
-
         console.log(state);
     };
 
     render() {
         const [film] = myFilm.films;
-        const {base , sum} = state;
+        const {base, sum} = state;
 
         console.log(film);
         return (
@@ -123,7 +123,7 @@ class HallDA extends Component {
                             </div>
                         </Col>
                     </Row>
-                    <Place_hall place={base} rodi={this.placeTest}/>
+                    <Place_hall place={base} choiceOfPlaces={this.choiceOfPlaces}/>
                     <Row className="cinema_footer">
                         <Col xs="12">
                             <Row className="cinema_footer__item">
