@@ -1,10 +1,10 @@
 import React from 'react'
 import {Row, Col} from 'reactstrap';
-import './FilmsWrapper.css'
+
 
 const FilmsWrapper = ({film}) => {
     return (
-        <Row className="content_card">
+        <Row className="d-flex">
             <Col xs="4" className="content_card-img">
                 <img className="content_card-img__item" src={film.img} alt={film.title}/>
             </Col>
@@ -19,10 +19,6 @@ const FilmsWrapper = ({film}) => {
                         <span className="">
                             <i className="">close</i>
                         </span>
-                        <p>{film.content}</p>
-                    </div>
-                    <div className="">
-                        <div>Купить билет на фильм</div>
                     </div>
                 </Row>
             </Col>
