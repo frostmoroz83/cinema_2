@@ -8,6 +8,7 @@ import SignUp from './components/auth/SignUp'
 import CreateFilms from './components/films/CreateFilms'
 import HalloDA from './components/films/HallDA'
 import FAQ from './components/films/FAQ'
+import Ticket from './components/films/Ticket'
 
 import {Container, CardImgOverlay, CardImg, Row} from 'reactstrap';
 import './App.css'
@@ -35,6 +36,7 @@ class App extends React.Component {
                                     <Route path='/create' component={CreateFilms}/>
                                     <Route path='/hallo' component={HalloDA}/>
                                     <Route path='/faq' component={FAQ}/>
+                                    <Route path='/ticket' component={Ticket}/>
                                 </Switch>
                                 </Row>
                             </Container>

@@ -1,5 +1,6 @@
 .nav_bar {
     background-color: #6c9ce2;
+    border-radius: 10px 10px 0 0;
     /*height: 50px;*/
 }
 .header_name {

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Place_hall from './Place_hall'
 import {Row, Col, Button} from 'reactstrap';
 import './Cinema_hall.css'
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import classnames from "classnames";
 
 const myFilm = {
@@ -33,12 +33,25 @@ const state = {
         0: {
             0: {'row': 'Ряд 1', 'place': 'Место 1', 'status': 'open'},
             1: {'row': 'Ряд 1', 'place': 'Место 2', 'status': 'open'},
-            // 2:{'place': 'Место 3'},
+            2: {'row': 'Ряд 1', 'place': 'Место 3', 'status': 'open'},
+            3: {'row': 'Ряд 1', 'place': 'Место 4', 'status': 'open'},
+            4: {'row': 'Ряд 1', 'place': 'Место 5', 'status': 'open'},
         },
         1: {
             0: {'row': 'Ряд 2', 'place': 'Место 1', 'status': 'open'},
             1: {'row': 'Ряд 2', 'place': 'Место 2', 'status': 'open'},
             2: {'row': 'Ряд 2', 'place': 'Место 3', 'status': 'open'},
+            3: {'row': 'Ряд 2', 'place': 'Место 4', 'status': 'open'},
+            4: {'row': 'Ряд 2', 'place': 'Место 5', 'status': 'open'},
+            5: {'row': 'Ряд 2', 'place': 'Место 6', 'status': 'open'},
+        },
+        2: {
+            0: {'row': 'Ряд 3', 'place': 'Место 1', 'status': 'open'},
+            1: {'row': 'Ряд 3', 'place': 'Место 2', 'status': 'open'},
+            2: {'row': 'Ряд 3', 'place': 'Место 3', 'status': 'open'},
+            3: {'row': 'Ряд 3', 'place': 'Место 4', 'status': 'open'},
+            4: {'row': 'Ряд 3', 'place': 'Место 5', 'status': 'open'},
+            5: {'row': 'Ряд 3', 'place': 'Место 6', 'status': 'open'},
         }
     },
 };
@@ -48,23 +61,23 @@ class HallDA extends Component {
     choiceOfPlaces = (id_row, id_place) => {
         const arr = state.base;
         const sum = state;
-        const message = state.place;
+        const {number_place} = state.place;
         const id = `${id_row}_${id_place}`;
         if (arr[id_row][id_place]['status'] !== 'close_place') {
             arr[id_row][id_place]['status'] = 'close_place';
             sum.sum += state.place.price;
-            message.number_place[id] = arr[id_row][id_place];
+            number_place[id] = arr[id_row][id_place];
         } else {
             arr[id_row][id_place]['status'] = 'open';
             sum.sum -= state.place.price;
-            delete message.number_place[id];
+            delete number_place[id];
         }
 
         this.setState({
             ...state,
             place: {
                 ...state,
-                number_place: message,
+                number_place,
             },
             sum: sum,
             base: arr,
@@ -72,14 +85,13 @@ class HallDA extends Component {
         console.log(state);
     };
     booked = () => {
-        const ticketss = state.place.number_place;
-        console.log(ticketss);
+        const ticket = state.place.number_place;
         return (
             <div>
-                {ticketss && Object.keys(ticketss).map((id) =>
+                {ticket && Object.keys(ticket).map((id) =>
                     <Col xs="1">
-                        {ticketss[id].row}
-                        {ticketss[id].place}
+                        {ticket[id].row}
+                        {ticket[id].place}
                     </Col>
                 )}
             </div>
@@ -88,7 +100,8 @@ class HallDA extends Component {
 
     render() {
         const [film] = myFilm.films;
-        const {base, sum} = state;
+        const {base, sum, place} = state;
+
 
         console.log(film);
         return (
@@ -149,12 +162,15 @@ class HallDA extends Component {
                                 </Col>
                                 <Col xs="3">
                                     <Row className="justify-content-end cinema_btn">
-                                        <Button
-                                            color="primary"
-                                            className="align-items-center"
-                                        >
-                                            Забронировать место
-                                        </Button>
+                                        <NavLink to='/ticket' place={place} sum={sum}>
+                                            <Button
+                                                color="primary"
+                                                className="align-items-center"
+                                            >
+                                                Забронировать место
+                                            </Button>
+                                        </NavLink>
+
                                     </Row>
                                 </Col>
                             </Row>
